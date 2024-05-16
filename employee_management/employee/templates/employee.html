@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}employee{% endblock title%}
+
+{% block content %}
+{% if messages %}
+<div class="alert alert-primary" role="alert">
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+</div>
+{% endif %}
+    <div class="container mb-5">
+        {% comment %} {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %} {% endcomment %}
+
+        <form class="col-12 card mx-auto my-3 shadow-lg p-3" method="post" enctype="multipart/form-data">
+            <h3>Add Employee</h3>
+            <hr/>
+            {% csrf_token %}
+            <div class="mb-2">
+                <label class="form-label">Name</label>
+                <input type="text" name="employee_name" class="form-control" placeholder="Enter the name" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Role</label>
+                <input type="text" name="employee_role" class="form-control" placeholder="Enter the role" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Department</label>
+                <input type="text" name="employee_department" class="form-control" placeholder="Enter the department" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Image</label>
+                <input type="file" name="employee_image" class="form-control" placeholder="Upload the image" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Salary</label>
+                <input type="number" name="employee_salary" class="form-control" placeholder="Enter the salary" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Email</label>
+                <input type="email" name="employee_email" class="form-control" placeholder="Enter the email" required/>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Phone</label>
+                <input type="number" name="employee_phone" class="form-control" placeholder="Enter the phone number" required/>
+            </div>
+            <button class="btn btn-success">Add Employee</button>
+        </form>
+    </div>
+{% endblock content %}

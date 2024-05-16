@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+ {% block title %}employee{% endblock title%} 
+{% block content %}
+<div class="mx-auto col-10 col-xl-6 col-md-8 mt-3">
+    <form>
+        <label class="form-label">Search</label>
+        <input type="text" name="search" class="form-control mb-2" />
+        <button type="submit" class="btn btn-primary mb-5">Search</button>
+    </form>
+</div>
+<div class="table-responsive mx-auto p-3">
+    <table class="table table-bordered border-dark table-hover text-center text-capitalize" style="width: 100%;">
+        <tr class=' '>
+            <th>Id</th>
+            <th>Employee name</th>
+            <th>Role</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+
+    
+        {% for emp in employee %}
+        <tr>
+            <td>{{emp.id}}</td>
+            <td><a href="/{{emp.id}}" >{{emp.employee_name}}</a></td>
+            <td>{{emp.employee_role}}</td>
+            <td>{{emp.employee_department}}</td>
+            <td>{{emp.employee_salary}}</td>
+            <td>{{emp.employee_email}}</td>
+            <td>{{emp.employee_phone}}</td>
+            <td>
+                <a href="/delete/{{emp.id}}" class="btn btn-danger mb-2">Delete</a><br />
+                <a href="/update/{{emp.id}}" class="btn btn-success">Update</a>
+            </td>
+            
+        </tr>
+        {% endfor %}
+        
+    </table>
+<!-- </div> -->
+
+{% endblock content %}
