@@ -21,6 +21,9 @@ def employees(request):
             employee_salary = data.get('employee_salary')
             employee_role = data.get('employee_role')
             employee_department = data.get('employee_department')
+            employee_education = data.get('employee_education')
+            employee_location = data.get('employee_location')
+            employee_bonus = data.get('employee_bonus')
             employee_image = request.FILES.get('employee_image')
 
             Employee.objects.create(
@@ -31,6 +34,9 @@ def employees(request):
                 employee_role=employee_role,
                 employee_department=employee_department,
                 employee_image=employee_image,
+                employee_education=employee_education,
+                employee_location=employee_location,
+                employee_bonus=employee_bonus,
             )
             return redirect('/viewAll/')
         return add_employee(request)
@@ -58,6 +64,7 @@ def update(request,id):
         employee_salary = data.get('employee_salary')
         employee_role = data.get('employee_role')
         employee_department = data.get('employee_department')
+        employee_education = data.get('employee_education')
         employee_image = request.FILES.get('employee_image')
 
         queryset.employee_email = employee_email
@@ -65,6 +72,7 @@ def update(request,id):
         queryset.employee_salary = employee_salary
         queryset.employee_role = employee_role
         queryset.employee_department = employee_department
+        queryset.employee_education = employee_education
         if employee_image:
             queryset.employee_image = employee_image
         queryset.save()
@@ -130,7 +138,11 @@ def register(request):
         return redirect('/login/')
     return render(request,'register.html')
 
-def singleEmployee(request,id):
-    user=Employee.objects.filter(id=id).first()
-    context={'user':user}
-    return render(request,'single.html',context)
+def singleEmployee(request, id):
+    try:
+        id = int(id)                    # Validate that 'id' is an integer
+    except ValueError:
+        return HttpResponse("Invalid ID") # If 'id' is not an integer, return a bad request response
+    user = Employee.objects.filter(id=id).first()    # Attempt to retrieve the employee by ID
+    context = {'user': user}                            # Render the template with the user context
+    return render(request, 'single.html', context)

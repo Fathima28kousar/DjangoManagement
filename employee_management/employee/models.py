@@ -12,5 +12,9 @@ class Employee(models.Model):
     employee_role = models.CharField(max_length=255,default="")
     employee_department = models.CharField(max_length=255,default="")
     employee_image = models.ImageField(upload_to='imageFolder')
+    employee_education = models.CharField(max_length=500,default="")
+    employee_location = models.CharField(max_length=400,default="")
+    employee_bonus = models.CharField(max_length=200,default="")
+
     
 

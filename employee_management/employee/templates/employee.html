@@ -22,33 +22,52 @@
             <h3>Add Employee</h3>
             <hr/>
             {% csrf_token %}
-            <div class="mb-2">
-                <label class="form-label">Name</label>
-                <input type="text" name="employee_name" class="form-control" placeholder="Enter the name" required/>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Role</label>
-                <input type="text" name="employee_role" class="form-control" placeholder="Enter the role" required/>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Department</label>
-                <input type="text" name="employee_department" class="form-control" placeholder="Enter the department" required/>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Image</label>
-                <input type="file" name="employee_image" class="form-control" placeholder="Upload the image" required/>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Salary</label>
-                <input type="number" name="employee_salary" class="form-control" placeholder="Enter the salary" required/>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Email</label>
-                <input type="email" name="employee_email" class="form-control" placeholder="Enter the email" required/>
-            </div>
-            <div class="mb-2">
-                <label class="form-label">Phone</label>
-                <input type="number" name="employee_phone" class="form-control" placeholder="Enter the phone number" required/>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="employee_name" class="form-control" placeholder="Enter the name" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Role</label>
+                        <input type="text" name="employee_role" class="form-control" placeholder="Enter the role" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Department</label>
+                        <input type="text" name="employee_department" class="form-control" placeholder="Enter the department" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Highest Education</label>
+                        <input type="text" name="employee_education" class="form-control" placeholder="Enter the highest education" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Image</label>
+                        <input type="file" name="employee_image" class="form-control" placeholder="Upload the image" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <label class="form-label">Salary</label>
+                        <input type="number" name="employee_salary" class="form-control" placeholder="Enter the salary" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Bonus</label>
+                        <input type="number" name="employee_bonus" class="form-control" placeholder="Enter the bonus" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="employee_email" class="form-control" placeholder="Enter the email" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Phone</label>
+                        <input type="number" name="employee_phone" class="form-control" placeholder="Enter the phone number" required/>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Location</label>
+                        <input type="text" name="employee_location" class="form-control" placeholder="Enter the location" required/>
+                    </div>
+                    
+                </div>
             </div>
             <button class="btn btn-success">Add Employee</button>
         </form>
