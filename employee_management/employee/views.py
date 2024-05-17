@@ -1,10 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 
 
 def employees(request):
@@ -12,6 +12,7 @@ def employees(request):
 
         if not request.user.is_authenticated:
             messages.info(request, 'Please log in to add employee details')
+            
         @login_required(login_url='/login/')
         def add_employee(request):
             data = request.POST
@@ -54,8 +55,11 @@ def view_employee(request):
     return render(request,'view.html',context)
 
 @login_required(login_url='/login/')
-def update(request,id):
-    queryset = Employee.objects.get(id=id)
+def update(request,employee_name):
+    try:
+        queryset = Employee.objects.get(employee_name=employee_name)
+    except Employee.DoesNotExist:
+        raise Http404("Employee matching query does not exist.")
 
     if request.method == 'POST':
         data = request.POST
@@ -146,3 +150,6 @@ def singleEmployee(request, id):
     user = Employee.objects.filter(id=id).first()    # Attempt to retrieve the employee by ID
     context = {'user': user}                            # Render the template with the user context
     return render(request, 'single.html', context)
+
+def home(request):
+    return render(request,'home.html')

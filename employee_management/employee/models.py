@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import *
 
+
 # Create your models here.
 
 class Employee(models.Model):
@@ -17,4 +18,3 @@ class Employee(models.Model):
     employee_bonus = models.CharField(max_length=200,default="")
 
     
-

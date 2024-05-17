@@ -1,0 +1,23 @@
+.imageContainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContent {
+    background-image: url('/static/images/peopl.png');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width:100%;
+}
+@media(max-width:1024px){
+    .imageContent{
+        background-size: contain;
+        background-color: #f8f6f3;
+    }
+}

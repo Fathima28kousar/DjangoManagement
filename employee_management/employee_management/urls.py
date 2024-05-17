@@ -27,10 +27,11 @@ urlpatterns = [
     path('login/',log_in,name='log_in'),
     path('logout/',log_out,name='log_out'),
     path('register/',register,name='register'),
-    path('update/<id>',update,name='update'),
+    path('update/<employee_name>',update,name='update'),
     path('delete/<id>',delete,name='delete'),
     path('viewAll/',view_employee,name='view_employee'),
-    path('<str:id>/',singleEmployee,name='singleEmployee')
+    path('<str:id>/',singleEmployee,name='singleEmployee'),
+    path("",home,name='home')
 ]
 
 if settings.DEBUG:
