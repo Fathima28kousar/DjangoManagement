@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
-import os
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,6 +76,8 @@ WSGI_APPLICATION = 'employee_management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -82,6 +86,20 @@ DATABASES = {
         'PASSWORD':'roots',
         'HOST': 'localhost',
         'PORT': '3306',
+    }
+}
+
+DATABASES = {
+    'default': dj_database_url.config(
+        conn_max_age=600,
+        ssl_require=True,
+    )
+}
+
+DATABASES['default']['OPTIONS'] = {
+    'charset': 'utf8mb4',
+    'ssl': {
+        'ca': os.environ.get('MYSQL_ATTR_SSL_CA', '/etc/ssl/cert.pem')
     }
 }
 
