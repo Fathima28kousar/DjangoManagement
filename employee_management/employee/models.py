@@ -17,4 +17,5 @@ class Employee(models.Model):
     employee_location = models.CharField(max_length=400,default="")
     employee_bonus = models.CharField(max_length=200,default="")
 
+
     
